@@ -16,6 +16,8 @@ int main(){
     }
 }
 
+void comparar(int )
+
 
 void gerar(int *lista){ //Defino a variável gerar
 
