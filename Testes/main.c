@@ -2,18 +2,33 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <time.h>
+#include <conio.h>
+#include <windows.h>
 
 void gerar(int *lista); //Crio a função gerar
+void print(int matriz[3][3]);
+void loc(int matriz[3][3], int *i, int *j);
 
 int main(){
     setlocale(LC_ALL, "PORTUGUESE"); //Defino a linguagem ed revisão como português
 
-    int tela[9]; //Crio a variável do array (pode ser global se quiserem)
+    int tela[9], pos1 = 0, pos2 = 0; //Crio a variável do array (pode ser global se quiserem)
+    char tela2[9];
     gerar(tela); //Com a função, transformo o array criado em uma tela resolvível
 
-    for(int i = 0; i < 9; i++){ //Printo o array a fim de testes
-        printf("%d", tela[i]);
+    int estadoinicial[3][3], pos = 0;
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            estadoinicial[i][j] = tela[pos];
+            pos++;
+        }
     }
+    printf("\n\n\n\n\n");
+    print(estadoinicial);
+    printf("\n\n\n\n");
+    loc(estadoinicial, &pos1, &pos2);
+    printf("\t\ti = %d | j = %d", pos1 + 1, pos2 + 1);
+    sleep(100);
 }
 
 
@@ -69,3 +84,35 @@ void gerar(int *lista){ //Defino a variável gerar
 
     }
 }
+
+void print(int matriz[3][3]){
+    for(int i=0; i<3; i++)
+    {
+        printf("\n\n");
+        for(int j=0; j<3; j++)
+        {
+            if(matriz[i][j] == 0){
+                printf("\t_\t");
+            }else{
+                printf("\t%d\t",matriz[i][j]);
+            }
+        }
+    }
+    return;
+}
+
+void loc(int matriz[3][3], int *i, int *j){
+    for(int x = 0; x < 3; x++){
+        for(int y = 0; y < 3; y++){
+            if(matriz[x][y] == 0){
+                *i = x;
+                *j = y;
+            }
+        }
+    }
+
+}
+
+
+
+//FAZER SETAS FUNCIONAREM COM FGET!!!!!!!!!!!!!!!'
