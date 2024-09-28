@@ -112,21 +112,26 @@ void fs(int m1[3][3], int novaMatriz[3][3]){
 //TODO: usar essa funcao como base para a funcao de avaliacao
 int somaehpar(int wololo[3][3])
 {
-    int sum = 0;
+    int v_procurado[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, sum = 0; // usar soma pra verificar quantos numeros estão em uma posição correta
+
     for(int i=0; i<3; i++)
     {
         for(int j=0; j<3; j++)
         {
-            sum += wololo[i][j];
+            if(v_procurado[i][j] == wololo[i][j]){
+                sum++;
+            }
         }
     }
-    if ((sum % 2) == 0)
-    {
-        return 1;
+    if (sum == 0){
+        return 0; // caso o vetor atual nao seja igual ao objetivo, ele retorna 0, ou seja, a solução não foi encontrada
     }
     else
     {
-        return 0;
+        if(sum == 9){
+          return 1; // caso a soma seja 9, todos os valores estão na posição correta, a solução foi encontrada
+        }
+
     }
 }
 

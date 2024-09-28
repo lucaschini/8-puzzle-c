@@ -28,6 +28,13 @@ int main(){
     printf("\n\n\n\n");
     loc(estadoinicial, &pos1, &pos2);
     printf("\t\ti = %d | j = %d", pos1 + 1, pos2 + 1);
+
+
+    int teste[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, resultado;
+
+    resultado = avalia(teste);
+    printf(resultado);
+
     sleep(100);
 }
 
@@ -116,3 +123,26 @@ void loc(int matriz[3][3], int *i, int *j){
 
 
 //FAZER SETAS FUNCIONAREM COM FGET!!!!!!!!!!!!!!!'
+
+
+// FUNCAO PRA AVALIAR RESOLUÇÃO
+
+int avalia(int wololo[3][3])
+{
+    int v_procurado[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, sum = 0; // usar soma pra verificar quantos numeros estão em uma posição correta
+
+    for(int i=0; i<3; i++)
+    {
+        for(int j=0; j<3; j++)
+        {
+            if(v_procurado[i][j] == wololo[i][j]){
+                sum++;
+            }
+        }
+    }
+    if (sum == 9){
+        return 1; // caso a soma seja 9, todos os valores estão na posição correta, a solução foi encontrada
+    } else {
+          return 0; // caso o vetor atual nao seja igual ao objetivo, ele retorna 0, ou seja, a solução não foi encontrada
+    }
+}
