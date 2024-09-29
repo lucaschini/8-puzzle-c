@@ -12,7 +12,7 @@ void loc(int matriz[3][3], int *i, int *j);
 int main(){
     setlocale(LC_ALL, "PORTUGUESE"); //Defino a linguagem ed revisão como português
 
-    int tela[9], pos1 = 0, pos2 = 0; //Crio a variável do array (pode ser global se quiserem)
+    int tela[9], pos1 = 0, pos2 = 0, tecla; //Crio a variável do array (pode ser global se quiserem)
     char tela2[9];
     gerar(tela); //Com a função, transformo o array criado em uma tela resolvível
 
@@ -29,6 +29,31 @@ int main(){
     loc(estadoinicial, &pos1, &pos2);
     printf("\t\ti = %d | j = %d", pos1 + 1, pos2 + 1);
     sleep(100);
+
+    while(1){ //O while dura enquanto o jogo terminar (falta a função objetivo)
+        tecla = getch();
+
+        if(tecla == 224){
+            tecla = getch();
+
+            switch(tecla){
+            case 72:
+                printf("Cima");
+                break;
+            case 80:
+                printf("Baixo");
+                break;
+            case 75:
+                printf("Esquerda");
+                break;
+            case 77:
+                printf("Direita");
+                break;
+            }
+        }else if(tecla == 27)
+        printf("esc");
+        break;
+    }
 }
 
 
