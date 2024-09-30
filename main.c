@@ -33,7 +33,21 @@ int main(){
             pos++;
             }
         }
-            system("color 9F");
+
+        system("color 9F");
+        printf("\n\n\n\n\n");
+        printf("\t\t\t  **********************************\n");
+        printf("\t\t\t  *          8-PUZZLE GAME         *\n");
+        printf("\t\t\t  **********************************\n");
+        printf("\n");
+
+        printf("\n");
+        printf("\t\tO objetivo do 8-Puzzle é organizar os números de 1 a 8\n");
+        printf("\t\tem ordem crescente, com o espaço vazio no último lugar.\n");
+        printf("\t\tVocê pode mover o espaço vazio aos blocos adjacentes.\n");
+        printf("\n");
+        sleep(5);
+        system("cls");
 
     while(retorno != 1){ //O while dura enquanto o jogo terminar (falta a função objetivo)
 
@@ -42,7 +56,7 @@ int main(){
         print(m);
         printf("\n\n\n\n");
         loc(m, &pos1, &pos2);
-        printf("\t\ti = %d | j = %d", pos1 + 1, pos2 + 1);
+        printf("\t\t  i = %d | j = %d", pos1 + 1, pos2 + 1);
         tecla = getch();
 
         if(tecla == 224){
