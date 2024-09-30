@@ -10,39 +10,34 @@
 #define KEY_LEFT 75
 
 
-void leitura(int *posicao_vazio_i, int *posicao_vazio_j){
-    int movimento;
-    printf("Faça um movimento:\n\n");
-    movimento = getch();
-    printf("%c",movimento);
-    printf("%d%d",*posicao_vazio_i,*posicao_vazio_j);
-    if(movimento == KEY_UP){
-        (*posicao_vazio_i)--;
-        printf("UP");
+void sucessora(int *movimento, int *i, int *j, int matriz[3][3]){
+    int aux_valor, aux_i, aux_j;
+    aux_i = *i; //guardando a posição inicial do vazio
+    aux_j = *j;
+    if(*movimento == KEY_UP && (*i) > 0){ //fazendo a verificação e alterando a posição
+        (*i)--;
     }
-    else if(movimento == KEY_DOWN){
-        (*posicao_vazio_i)++;
-        printf("DO");
+    else if(*movimento == KEY_DOWN && (*i) < 2){
+        (*i)++;
     }
-    else if(movimento == KEY_RIGHT){
-        (*posicao_vazio_j)++;
-        printf("RI");
+    else if(*movimento == KEY_RIGHT && (*j) < 2){
+        (*j)++;
     }
-    else if(movimento == KEY_LEFT){
-        (*posicao_vazio_j)--;
-        printf("LE");
-    }
-    if((*posicao_vazio_i)>2 || (*posicao_vazio_i)<0 || (*posicao_vazio_j)>2 || (*posicao_vazio_j)<0){
-        printf("O movimento não é válido");
+    else if(*movimento == KEY_LEFT && (*j) > 0){
+        (*j)--;
     }
     else{
-        return *posicao_vazio_i, *posicao_vazio_j;
+        return; // se não for válido
     }
+    aux_valor = matriz[*i][*j]; //guardando o valor que o vazio vai ocupar futuramente
+    matriz[*i][*j] = 0; //definindo a nova posição como vazio
+    matriz[aux_i][aux_j] = aux_valor; //definindo a posição antiga do vazio com o novo valor
+    return;
 }
-int i, j;
-i = 2;
-j = 1;
+
+int tecla = KEY_LEFT, i = 2, j = 1;
+int m[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
 int main(){
-leitura(&i,&j);
+sucessora(&tecla,&i,&j,m);
 printf("%d%d",i,j);
 }
