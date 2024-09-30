@@ -17,8 +17,7 @@ int main()
     return 0;
 }
 
-void avalia(int m_comparar[3][3], int *retorno)
-{
+void avalia(int m_comparar[3][3], int *retorno){
     int v_procurado[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, sum = 0; // usar soma pra verificar quantos numeros estão em uma posição correta
 
     for(int i=0; i<3; i++){
