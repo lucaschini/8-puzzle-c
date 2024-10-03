@@ -61,7 +61,7 @@ int main(){
 
         if(tecla == 224){
             tecla = getch();
-
+            // switch redundante
             switch(tecla){
             case 72:
                 tecla = KEY_UP;
@@ -167,7 +167,7 @@ void loc(int matriz[3][3], int *i, int *j){
 
 }
 
-void sucessora(int movimento, int *i, int *j, int matriz[3][3]){
+void sucessora(int movimento, int *i, int *j, int matriz[3][3]){// adicionar matriz como parametro e copia
     int aux_valor, aux_i, aux_j;
     aux_i = *i; //guardando a posição inicial do vazio
     aux_j = *j;
@@ -193,7 +193,7 @@ void sucessora(int movimento, int *i, int *j, int matriz[3][3]){
     matriz[aux_i][aux_j] = aux_valor; //definindo a posição antiga do vazio com o novo valor
 }
 
-void avalia(int m_comparar[3][3], int *retorno){
+void avalia(int m_comparar[3][3], int *retorno){// nao precisa de ponteiro
     int v_procurado[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, sum = 0; // usar soma pra verificar quantos numeros estão em uma posição correta
 
     for(int i=0; i<3; i++){
