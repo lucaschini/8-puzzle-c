@@ -15,7 +15,7 @@ void gerar(int *lista); //Crio a função gerar
 void print(int matriz[3][3]);
 void loc(int matriz[3][3], int *i, int *j);
 void sucessora(int movimento, int *i, int *j, int matriz[3][3]);
-void avalia(int m_comparar[3][3], int *retorno);
+int avalia(int m_comparar[3][3]);
 
 int main(){
 
@@ -24,7 +24,7 @@ int main(){
     int tela[9], pos1 = 0, pos2 = 0, tecla; //Crio a variável do array (pode ser global se quiserem)
     char tela2[9];
     gerar(tela); //Com a função, transformo o array criado em uma tela resolvível
-    int *retorno = 0;
+    int retorno = 0;
     int m[3][3], pos = 0;
 
     for(int i = 0; i < 3; i++){
@@ -83,7 +83,7 @@ int main(){
 
 
         sucessora(tecla, &pos1, &pos2, m);
-        avalia(m, &retorno);
+        retorno = avalia(m);
         system("cls");
     }
     printf("Parabéns você conseguiu encontrar a solução!!");
@@ -167,7 +167,7 @@ void loc(int matriz[3][3], int *i, int *j){
 
 }
 
-void sucessora(int movimento, int *i, int *j, int matriz[3][3]){// adicionar matriz como parametro e copia
+void sucessora(int movimento, int *i, int *j, int matriz[3][3]){// adicionar matriz como parametro e cópia
     int aux_valor, aux_i, aux_j;
     aux_i = *i; //guardando a posição inicial do vazio
     aux_j = *j;
@@ -193,7 +193,7 @@ void sucessora(int movimento, int *i, int *j, int matriz[3][3]){// adicionar mat
     matriz[aux_i][aux_j] = aux_valor; //definindo a posição antiga do vazio com o novo valor
 }
 
-void avalia(int m_comparar[3][3], int *retorno){// nao precisa de ponteiro
+int avalia(int m_comparar[3][3]){
     int v_procurado[3][3] = {{1,2,3},{4,5,6},{7,8,0}}, sum = 0; // usar soma pra verificar quantos numeros estão em uma posição correta
 
     for(int i=0; i<3; i++){
@@ -204,8 +204,8 @@ void avalia(int m_comparar[3][3], int *retorno){// nao precisa de ponteiro
         }
     }
     if (sum == 9){
-            *retorno = 1; // caso a soma seja 9, todos os valores estão na posição correta, a solução foi encontrada
+            return 1; // caso a soma seja 9, todos os valores estão na posição correta, a solução foi encontrada
     } else {
-        *retorno = 0; // caso o vetor atual nao seja igual ao objetivo, ele retorna 0, ou seja, a solução não foi encontrada
+        return 0; // caso o vetor atual nao seja igual ao objetivo, ele retorna 0, ou seja, a solução não foi encontrada
     }
 }
