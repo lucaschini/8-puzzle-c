@@ -46,7 +46,7 @@ int main(){
         printf("\t\tem ordem crescente, com o espaço vazio no último lugar.\n");
         printf("\t\tVocê pode mover o espaço vazio aos blocos adjacentes.\n");
         printf("\n");
-        sleep(5);
+        Sleep(5);
         system("cls");
 
     while(retorno != 1){ //O while dura enquanto o jogo terminar (falta a função objetivo)
